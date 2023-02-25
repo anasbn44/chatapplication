@@ -1,0 +1,113 @@
+/* Set the background color of the BorderPane */
+BorderPane {
+    -fx-background-color: #f2f2f2;
+}
+
+/* Style the VBox inside the ScrollPane */
+#vBox {
+    -fx-padding: 20px;
+}
+
+/* Style the Label at the top of the BorderPane */
+#name {
+    -fx-text-fill: #fff;
+}
+
+/* Style the HBox at the bottom of the BorderPane */
+HBox#bottom {
+    -fx-background-color: #fff;
+    -fx-padding: 20px;
+    -fx-border-color: #ddd;
+    -fx-border-width: 1px 0 0 0;
+}
+
+/* Style the ListView on the left side of the BorderPane */
+ListView#clientList {
+    -fx-background-color: #fff;
+    -fx-padding: 20px;
+    -fx-border-color: #ddd;
+    -fx-border-width: 0 1px 0 0;
+}
+
+/* Style the TextField and Button inside the HBox at the bottom of the BorderPane */
+TextField#message, Button#send, Button#broadcast {
+    -fx-background-color: #f2f2f2;
+    -fx-border-radius: 20px;
+    -fx-border-color: #ddd;
+    -fx-border-width: 1px;
+    -fx-padding: 10px 20px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #666;
+}
+
+/* Style the Button to Disconnect from the server */
+Button#disconnect {
+    -fx-background-color: #ff6666;
+    -fx-border-radius: 20px;
+    -fx-border-color: #ff6666;
+    -fx-border-width: 1px;
+    -fx-padding: 10px 20px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #fff;
+}
+/* chat bubble */
+.chat-bubble {
+    max-width: 250px;
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    border-radius: 20px;
+    position: relative;
+    animation-name: chat-bubble-anim;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+.chat-bubble-right {
+    background-color: #DCF8C6;
+    align-self: flex-end;
+}
+.chat-bubble-left {
+    background-color: #FFFFFF;
+    align-self: flex-start;
+}
+
+@keyframes chat-bubble-anim {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* send button */
+.send-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 12px 16px;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    position: relative;
+    animation-name: send-button-anim;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+.send-button:hover {
+    background-color: #3E8E41;
+}
+
+@keyframes send-button-anim {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

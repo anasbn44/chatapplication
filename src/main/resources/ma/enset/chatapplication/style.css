@@ -1,0 +1,50 @@
+/* Apply the following styles to the entire application */
+* {
+    -fx-font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    -fx-font-size: 14px;
+    -fx-box-sizing: border-box;
+}
+
+/* Apply the following styles to the main BorderPane */
+.border-pane {
+    -fx-background-color: #e7e7e7;
+}
+
+/* Apply the following styles to the VBox containing the form elements */
+.vbox {
+    -fx-padding: 30px;
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 5px;
+}
+
+/* Apply the following styles to the Label */
+.label {
+    -fx-font-size: 16px;
+    -fx-color: #4a4a4a;
+}
+
+/* Apply the following styles to the TextField */
+.text-field {
+    /*-fx-font-size: 16px;*/
+    -fx-color: #4a4a4a;
+    /*-fx-padding: 10px;*/
+    -fx-border: none;
+    -fx-border-radius: 5px;
+    -fx-background-color: #f5f5f5;
+}
+
+/* Apply the following styles to the Button */
+.button {
+    -fx-background-color: #25d366;
+    -fx-color: #ffffff;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-border: none;
+    -fx-cursor: pointer;
+    -fx-transition: all 0.3s ease;
+}
+
+/* Apply the following styles to the Button when it is hovered over */
+.button:hover {
+    -fx-background-color: #128c7e;
+}
