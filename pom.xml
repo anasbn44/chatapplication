@@ -64,7 +64,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>ma.enset.chatapplication/ma.enset.chatapplication.HelloApplication</mainClass>
+                            <mainClass>ma.enset.chatapplication/ma.enset.chatapplication.ClientApp</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
