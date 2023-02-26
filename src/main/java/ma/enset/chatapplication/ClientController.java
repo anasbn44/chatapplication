@@ -1,11 +1,7 @@
 package ma.enset.chatapplication;
 
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,7 +10,6 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -22,11 +17,8 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 import ma.enset.chatapplication.blocking.client.Client;
-import ma.enset.chatapplication.blocking.client.Conversation;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.Socket;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -37,8 +29,6 @@ public class ClientController implements Initializable {
     private Label name;
     @FXML
     private Button send;
-    @FXML
-    private Button broadcast;
     @FXML
     private Button disconnect;
     @FXML
@@ -72,27 +62,12 @@ public class ClientController implements Initializable {
             });
             client.receiveMessage(vBox, clientList);
 
-//            clientList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Client>() {
-//                @Override
-//                public void changed(ObservableValue<? extends Client> observableValue, Client client, Client t1) {
-//                    System.out.println(t1);
-//                    ObservableList<Client> clientObservableList = clientList.getSelectionModel().getSelectedItems();
-//
-//                    send.setOnAction(actionEvent -> sendMessage(clientObservableList));
-//                    message.setOnKeyPressed(keyEvent -> {
-//                        if(keyEvent.getCode() == KeyCode.ENTER){
-//                            sendMessage(clientObservableList);
-//                        }
-//                    });
-//                }
-//            });
             send.setOnAction(actionEvent -> sendMessage());
             message.setOnKeyPressed(keyEvent -> {
                 if(keyEvent.getCode() == KeyCode.ENTER){
                     sendMessage();
                 }
             });
-            broadcast.setOnAction(actionEvent -> sendMessageBroadcast());
             disconnect.setOnAction(actionEvent -> {
                 try {
                     onDisconnect();
@@ -117,36 +92,6 @@ public class ClientController implements Initializable {
             TextFlow textFlow = new TextFlow(text);
             textFlow.setStyle(
                     "-fx-color: rgb(239, 242, 255);" +
-                            "-fx-background-color: rgb(15, 125, 242);" +
-                            "-fx-background-radius: 20px;");
-
-            textFlow.setPadding(new Insets(5, 10, 5, 10));
-            text.setFill(Color.color(0.934, 0.925, 0.996));
-
-            hBox.getChildren().add(textFlow);
-            vBox.getChildren().add(hBox);
-            String preMessage = "";
-            for (Client c : to) {
-                preMessage = preMessage + c.getId() + ",";
-            }
-
-            System.out.println(preMessage.substring(0, preMessage.length() - 1));
-            client.sendMessage(preMessage.substring(0, preMessage.length() - 1) + "=>" + messageToSend);
-            message.clear();
-        }
-    }
-
-    public void sendMessageBroadcast(){
-        String messageToSend = message.getText();
-        if (!messageToSend.isEmpty()) {
-            HBox hBox = new HBox();
-            hBox.setAlignment(Pos.CENTER_RIGHT);
-
-            hBox.setPadding(new Insets(5, 5, 5, 10));
-            Text text = new Text(messageToSend);
-            TextFlow textFlow = new TextFlow(text);
-            textFlow.setStyle(
-                    "-fx-color: rgb(239, 242, 255);" +
                             "-fx-background-color: #128c7e;" +
                             "-fx-background-radius: 20px;");
 
@@ -155,8 +100,17 @@ public class ClientController implements Initializable {
 
             hBox.getChildren().add(textFlow);
             vBox.getChildren().add(hBox);
-
-            client.sendMessage(messageToSend);
+            messageToSend = client.getName() + " : " + messageToSend;
+            if(to.isEmpty()){
+                client.sendMessage(messageToSend);
+            } else {
+                String preMessage = "";
+                for (Client c : to) {
+                    preMessage = preMessage + c.getId() + ",";
+                }
+                messageToSend = preMessage.substring(0, preMessage.length() - 1) + "=>" + messageToSend;
+                client.sendMessage(messageToSend);
+            }
             message.clear();
         }
     }

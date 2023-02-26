@@ -24,7 +24,6 @@
          <children>
             <TextField fx:id="message" />
             <Button fx:id="send" mnemonicParsing="false" text="SEND" styleClass="send-button" />
-            <Button fx:id="broadcast" mnemonicParsing="false" text="BROADCAST" />
          </children>
       </HBox>
    </bottom>
