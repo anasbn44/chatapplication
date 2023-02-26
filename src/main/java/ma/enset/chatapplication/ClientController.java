@@ -40,10 +40,16 @@ public class ClientController implements Initializable {
     @FXML
     private ListView<Client> clientList;
 
+    private Stage stage;
+
     private Client client;
 
     public Client getClient() {
         return client;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 
     public void setClient(Client client) {
@@ -71,11 +77,12 @@ public class ClientController implements Initializable {
             disconnect.setOnAction(actionEvent -> {
                 try {
                     onDisconnect();
+                    back();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             });
-
+            stage.setOnCloseRequest(windowEvent -> onDisconnect());
         }
     }
 
@@ -142,14 +149,15 @@ public class ClientController implements Initializable {
         });
     }
 
-    public void onDisconnect() throws IOException {
+    public void onDisconnect(){
         client.sendMessage("disconnect");
         client.close();
-        Stage next = (Stage) disconnect.getScene().getWindow();
+    }
+
+    private void back() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(ClientApp.class.getResource("chat_0.fxml"));
         System.out.println(fxmlLoader);
-        next.setScene(new Scene(fxmlLoader.load()));
-
+        stage.setScene(new Scene(fxmlLoader.load()));
     }
 
 }

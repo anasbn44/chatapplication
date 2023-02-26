@@ -36,6 +36,7 @@ public class ConnectController implements Initializable {
         System.out.println(fxmlLoader);
         ClientController clientController = new ClientController();
         clientController.setClient(client);
+        clientController.setStage(next);
         fxmlLoader.setController(clientController);
         next.setScene(new Scene(fxmlLoader.load()));
     }

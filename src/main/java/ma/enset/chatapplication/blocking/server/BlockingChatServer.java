@@ -64,7 +64,7 @@ public class BlockingChatServer extends Thread{
                 PrintWriter pw = new PrintWriter(os, true);
                 String ip = socket.getRemoteSocketAddress().toString();
                 System.out.println("client : " + clientId + " IpAddr : " + ip);
-                pw.println("Welcome, your id is :" + clientId);
+                pw.println("Welcome!");
 
                 String request;
                 while ((request = br.readLine()) != null){
