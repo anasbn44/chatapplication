@@ -25,6 +25,9 @@ public class ConnectController implements Initializable {
     private Button connect;
 
     public void onConnect() throws IOException {
+        if(username.getText().isEmpty()){
+            return;
+        }
         client = new Client(new Socket("localhost", 1997));
         client.setName(username.getText());
         OutputStream os = client.getSocket().getOutputStream();
