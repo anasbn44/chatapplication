@@ -53,14 +53,13 @@ public class NonBlockingChatServer {
         ServerSocketChannel serverSocketChannel = (ServerSocketChannel) selectionKey.channel();
         SocketChannel  socketChannel = serverSocketChannel.accept();
         socketChannel.configureBlocking(false);
-        serverSocketChannel.register(selector, SelectionKey.OP_READ);
+        socketChannel.register(selector, SelectionKey.OP_READ);
         ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
         socketChannel.read(byteBuffer);
         String name = new String(byteBuffer.array());
         clientServerList.add(new ClientServer(++clientsCount, name, socketChannel));
-        sendClientList();
         sendMessage("Welcome", socketChannel);
-        sendClientList();
+        //sendClientList();
     }
 
     private void sendMessage(String message, SocketChannel socketChannel) throws IOException {

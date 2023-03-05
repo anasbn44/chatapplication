@@ -1,8 +1,9 @@
 package ma.enset.chatapplication.nonBlocking;
 
+import java.io.Serializable;
 import java.nio.channels.SocketChannel;
 
-public class ClientServer {
+public class ClientServer implements Serializable {
     private int id;
     private String name;
     private SocketChannel socketChannel;
