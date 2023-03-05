@@ -12,7 +12,7 @@ public class ClientApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(ClientApp.class.getResource("chat_0.fxml"));
-        System.out.println(fxmlLoader);
+        System.out.println(fxmlLoader.getLocation().toString());
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("MyChat");
         stage.setScene(scene);

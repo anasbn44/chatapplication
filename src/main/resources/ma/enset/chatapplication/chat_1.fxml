@@ -28,10 +28,10 @@
       </HBox>
    </bottom>
    <left>
-      <ListView fx:id="clientList" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <ListView fx:id="clientList" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER"  styleClass="chat-bubble-left" />
    </left>
    <top>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER" styleClass="chat-bubble-left">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="name" text="CLIENT">
                <font>

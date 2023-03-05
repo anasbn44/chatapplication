@@ -10,7 +10,7 @@ BorderPane {
 
 /* Style the Label at the top of the BorderPane */
 #name {
-    -fx-text-fill: #fff;
+    -fx-text-fill: #666;
 }
 
 /* Style the HBox at the bottom of the BorderPane */
