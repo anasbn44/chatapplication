@@ -1,4 +1,4 @@
-package ma.enset.chatapplication.nonBlocking;
+package ma.enset.chatapplication.nonBlocking.server;
 
 import java.io.*;
 import java.net.InetSocketAddress;
@@ -114,6 +114,7 @@ public class NonBlockingChatServer {
                 ByteBuffer byteBufferResponse=ByteBuffer.allocate(1024);
                 ClientServer fromClient = clientServerList.stream().filter(e -> e.getSocketChannel() == from).findAny().orElse(null);
                 String formattedMessage=String.format("%s say : %s",fromClient.getName(),message);
+                System.out.println(byteBufferResponse.toString());
                 byteBufferResponse.put(formattedMessage.getBytes());
                 byteBufferResponse.flip();
                 socketChannel.write(byteBufferResponse);

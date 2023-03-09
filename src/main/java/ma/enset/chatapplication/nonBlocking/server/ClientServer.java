@@ -1,4 +1,4 @@
-package ma.enset.chatapplication.nonBlocking;
+package ma.enset.chatapplication.nonBlocking.server;
 
 import java.io.Serializable;
 import java.nio.channels.SocketChannel;
