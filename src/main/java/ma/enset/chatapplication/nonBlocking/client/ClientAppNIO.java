@@ -16,8 +16,8 @@ public class ClientAppNIO {
                 try {
                     socketChannel.read(byteBuffer);
                     String response=new String(byteBuffer.array()).trim();
-                    if(response.length()>0){
-                        System.out.println("Response => "+response);
+                    if(response.length() > 0){
+                        System.out.println("Response : "+response);
                     }
                 } catch (IOException e) {
                     throw new RuntimeException(e);
@@ -30,7 +30,6 @@ public class ClientAppNIO {
             byteBuffer.put(request.getBytes());
             byteBuffer.flip();
             int bytesWritten = socketChannel.write(byteBuffer);
-            System.out.println(String.format("sending %s bytes",bytesWritten));
         }
     }
 }
